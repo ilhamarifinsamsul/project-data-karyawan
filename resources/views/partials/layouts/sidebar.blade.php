@@ -48,19 +48,19 @@
                         class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Kelola User
+                            Karyawan
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    {{-- <a href="{{ route('kategoriview.index') }}" --}}
-                    <a href="#"
+                    <a href="{{ route('departement.index') }}"
+                    {{-- <a href="#" --}}
                         {{-- class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}"> --}}
                         class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
-                            Kategori
+                            Departement
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
@@ -73,9 +73,9 @@
                     <a href="#"
                         {{-- class="nav-link {{ request()->segment(2) == '/laporanview' ? 'active' : '' }}">  --}}
                         class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Laporan Anggota
+                            Profile
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>

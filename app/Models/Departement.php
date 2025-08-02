@@ -1,4 +1,4 @@
-[<?php
+<?php
 
 namespace App\Models;
 
@@ -12,6 +12,8 @@ class Departement extends Model
      * @var array
      */
 
+    protected $table = 'departement';
+    
     protected $fillable = [
         'name'
     ];
