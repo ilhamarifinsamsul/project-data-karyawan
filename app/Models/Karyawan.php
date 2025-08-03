@@ -12,6 +12,8 @@ class Karyawan extends Model
      * @var array
      */
 
+    protected $table = 'karyawan';
+
     protected $fillable = [
         'nik',
         'name',

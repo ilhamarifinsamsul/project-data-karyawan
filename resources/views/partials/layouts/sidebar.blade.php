@@ -42,8 +42,7 @@
             </li>
             {{-- @if (session()->get('role') == 1) --}}
                 <li class="nav-item">
-                    {{-- <a href="{{ route('users.index') }}" --}}
-                    <a href="#"
+                    <a href="{{ route('karyawan.index') }}"
                         {{-- class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}"> --}}
                         class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
@@ -55,7 +54,6 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('departement.index') }}"
-                    {{-- <a href="#" --}}
                         {{-- class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}"> --}}
                         class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
@@ -82,7 +80,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('auth.logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout
