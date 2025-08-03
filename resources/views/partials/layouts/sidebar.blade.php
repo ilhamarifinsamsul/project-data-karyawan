@@ -6,21 +6,18 @@
     <span class="brand-text font-weight-light">Data Karyawan</span>
 </a>
 
-<!-- Sidebar -->
-<div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
         <div class="image">
-            <img src="{{ asset('/assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                alt="User Image">
+            <img src="{{ asset('/assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" style="width: 35px; height: 35px; object-fit: cover;">
         </div>
-        <div class="info">
-            <a href="#" class="d-block">
-                {{-- <strong>{{ session()->get('userName') }}</strong> --}}
-            </a>
+        <div class="info d-flex flex-column ms-2">
+            <span class="fw-bold text-white">{{ session('name') }}</span>
+            <small class="text-muted">{{ session('role') }}</small>
         </div>
     </div>
-
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -28,34 +25,20 @@
             <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
             <li class="nav-item">
-                {{-- <a href="{{ route('dashboard.index') }}" --}}
-                <a href="#"
-                    {{-- class="nav-link {{ request()->path() == '/dashboard' ? 'active' : '' }}"> --}}
-                    class="nav-link">
+                <a href="{{ route('dashboard.index') }}"
+                    class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
                         <i class="right fas fa-angle-right"></i>
                     </p>
                 </a>
-
             </li>
-            {{-- @if (session()->get('role') == 1) --}}
-                <li class="nav-item">
-                    <a href="{{ route('karyawan.index') }}"
-                        {{-- class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}"> --}}
-                        class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Karyawan
-                            <i class="right fas fa-angle-right"></i>
-                        </p>
-                    </a>
-                </li>
+
+            @if (session()->get('role') == 'Super Admin')
                 <li class="nav-item">
                     <a href="{{ route('departement.index') }}"
-                        {{-- class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}"> --}}
-                        class="nav-link">
+                        class="nav-link {{ request()->is('departement*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
                             Departement
@@ -63,7 +46,21 @@
                         </p>
                     </a>
                 </li>
-            {{-- @endif --}}
+            @endif
+
+            @if (in_array(session()->get('role'), ['Super Admin', 'Admin']))
+                <li class="nav-item">
+                    <a href="{{ route('karyawan.index') }}"
+                        class="nav-link {{ request()->is('karyawan*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Karyawan
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+            @endif
+
 
             {{-- @if (session()->get('role') == 1 || session()->get('role') == 2) --}}
                 <li class="nav-item">

@@ -37,6 +37,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
         $request->session()->put('isLogged', true);
         $request->session()->put('userId', $user->id);
+        $request->session()->put('name', $user->name);
         $request->session()->put('role', $user->roles);
 
         return redirect()->route('dashboard.index');
