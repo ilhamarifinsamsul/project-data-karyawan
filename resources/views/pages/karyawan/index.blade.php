@@ -75,16 +75,16 @@
                                         <td>{{ $k->departement->name }}</td>
 
                                         <td>
-                                        <a href="{{ route('karyawan.edit', $k['id']) }}" class="btn btn-primary btn-sm d-inline"><i class="fas fa-edit"></i></a>
-    
-                                        <a href="{{ route('karyawan.show', $k['id']) }}" class="btn btn-success btn-sm d-inline"><i class="fas fa-eye"></i></a>
-    
-                                        <form action="{{ route('karyawan.destroy', $k->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure?')">
-                                        @csrf
-                                        @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
-                                        </form>
-                                    </td>
+                                            <a href="{{ route('karyawan.edit', $k['id']) }}" class="btn btn-primary btn-sm d-inline"><i class="fas fa-edit"></i></a>
+        
+                                            <a href="{{ route('karyawan.show', $k['id']) }}" class="btn btn-success btn-sm d-inline"><i class="fas fa-eye"></i></a>
+        
+                                            <form action="{{ route('karyawan.destroy', $k->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure?')">
+                                            @csrf
+                                            @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </td>
 
 
                                     </tr>
