@@ -70,11 +70,11 @@
                                         <td>{{ $a++ }}</td>
                                         <td>{{ $d->name }}</td>
                                         <td>
-                                            <a href="{{ route('departement.edit', $d['id']) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('departement.destroy', $d->id) }}" method="POST" enctype="multipart/form-data" onclick="return confirm('Are you sure?')">
+                                            <a href="{{ route('departement.edit', $d['id']) }}" class="btn btn-primary btn-sm d-inline"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('departement.destroy', $d->id) }}" method="POST" enctype="multipart/form-data" onclick="return confirm('Are you sure?')" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                         </form>
                                         </td>
                                     </tr>
