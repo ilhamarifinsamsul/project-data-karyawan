@@ -64,10 +64,8 @@
 
             {{-- @if (session()->get('role') == 1 || session()->get('role') == 2) --}}
                 <li class="nav-item">
-                    <a href="{{ route('profile.index') }}"
-                    
-                        {{-- class="nav-link {{ request()->segment(2) == '/laporanview' ? 'active' : '' }}">  --}}
-                        class="nav-link">
+                    <a href="{{ route('profile.index') }}"                
+                        class="nav-link {{ request()->is('profile*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Profile

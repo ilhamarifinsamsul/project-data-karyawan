@@ -33,10 +33,12 @@ Route::get('/getSession', function () {
     return session()->all();
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(Authenticate::class)->name('dashboard.index');
 
-Route::get('/dashboard', function(){
-    return view('pages.dashboard.index');
-})->middleware(Authenticate::class)->name('dashboard.index');
+
+// Route::get('/dashboard', function(){
+//     return view('pages.dashboard.index');
+// })->middleware(Authenticate::class)->name('dashboard.index');
 
 Route::middleware('auth.role:Super Admin')->group(function () {
     Route::resource('departement', DepartementController::class);
