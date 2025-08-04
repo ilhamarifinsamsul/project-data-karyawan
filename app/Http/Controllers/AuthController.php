@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -33,11 +34,14 @@ class AuthController extends Controller
             return redirect()->route('auth.login')->with('error', 'Password salah');
         }
 
+        Auth::login($user);
+
         // simpan ke session
         $request->session()->regenerate();
         $request->session()->put('isLogged', true);
         $request->session()->put('userId', $user->id);
         $request->session()->put('name', $user->name);
+        $request->session()->put('nik', $user->nik);
         $request->session()->put('role', $user->roles);
 
         return redirect()->route('dashboard.index');

@@ -7,6 +7,8 @@ use App\Http\Controllers\KaryawanCotroller;
 use App\Http\Middleware\Authenticate;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Container\Attributes\Auth;
 
 app('router')->aliasMiddleware('auth.role', Authenticate::class);
 
@@ -19,6 +21,9 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::post('login', 'login')->name('processLogin');
     Route::get('logout', 'logout')->name('logout');
 });
+
+// // Alias untuk default Laravel redirect
+// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login'); // ← untuk middleware redirect
 
 Route::get('/login', function () {
     return view('pages.auth.signin');
@@ -48,3 +53,16 @@ Route::middleware('auth.role:Super Admin|Admin')->prefix('karyawan')->name('kary
         Route::delete('/{id}', 'destroy')->name('destroy');
     });
 });
+
+Route::controller(ProfileController::class)
+    ->middleware(Authenticate::class)
+    ->prefix('profile')
+    ->name('profile.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/edit-password', 'editPassword')->name('edit-password');
+        Route::post('/update-password', 'updatePassword')->name('update-password');
+    });
+
+
+
